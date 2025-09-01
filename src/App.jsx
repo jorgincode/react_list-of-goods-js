@@ -51,6 +51,18 @@ export const App = () => {
     goods.length !== visibleGoods.length ||
     goods.some((item, index) => item !== visibleGoods[index]);
 
+  const handleSortTypeAlphabeticalOrder = () => {
+    setSortType(SORT_TYPE_ALPHABETICAL_ORDER);
+  };
+
+  const handleSortTypeLength = () => {
+    setSortType(SORT_TYPE_LENGTH);
+  };
+
+  const handleReverse = () => {
+    setIsReverse(prev => !prev);
+  };
+
   const handleReset = () => {
     setIsReverse(false);
     setSortType(null);
@@ -64,7 +76,7 @@ export const App = () => {
           className={cn('button is-info', {
             'is-light': sortType !== SORT_TYPE_ALPHABETICAL_ORDER,
           })}
-          onClick={() => setSortType(SORT_TYPE_ALPHABETICAL_ORDER)}
+          onClick={handleSortTypeAlphabeticalOrder}
         >
           Sort alphabetically
         </button>
@@ -74,7 +86,7 @@ export const App = () => {
           className={cn('button is-success', {
             'is-light': sortType !== SORT_TYPE_LENGTH,
           })}
-          onClick={() => setSortType(SORT_TYPE_LENGTH)}
+          onClick={handleSortTypeLength}
         >
           Sort by length
         </button>
@@ -82,7 +94,7 @@ export const App = () => {
         <button
           type="button"
           className={cn('button is-warning', { 'is-light': !isReverse })}
-          onClick={() => setIsReverse(!isReverse)}
+          onClick={handleReverse}
         >
           Reverse
         </button>
