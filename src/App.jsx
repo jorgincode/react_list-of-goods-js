@@ -51,6 +51,11 @@ export const App = () => {
     goods.length !== visibleGoods.length ||
     goods.some((item, index) => item !== visibleGoods[index]);
 
+  const handleReset = () => {
+    setIsReverse(false);
+    setSortType(null);
+  };
+
   return (
     <div className="section content">
       <div className="buttons">
@@ -86,10 +91,7 @@ export const App = () => {
           <button
             type="button"
             className="button is-danger is-light"
-            onClick={() => {
-              setIsReverse(false);
-              setSortType(null);
-            }}
+            onClick={handleReset}
           >
             Reset
           </button>
